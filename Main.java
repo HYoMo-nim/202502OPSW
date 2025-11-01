@@ -6,15 +6,17 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+
+// class 앞에 public가 있어야 하는데 그러면 오류가 생겨서 일단 빼뒀습니다
 class User {  
-    private long userId;    
+    private long user_id;    
     private String email;
     private String password;
     private String nickname;
     private LocalDateTime createdAt;  
 
     public User(long userId, String email, String password, String nickname) {
-        this.userId = userId;
+        this.user_id = userId;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
@@ -22,7 +24,7 @@ class User {
     }
 
     public long getUserId() {
-        return userId;
+        return user_id;
     }
     public String getEmail() {
         return email;
@@ -33,18 +35,17 @@ class User {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
 
     @Override
     public String toString() {
-        return "회원 ID : " + userId + ", \n이메일 : " + email + ", \n닉네임 : " + nickname + ", \n가입일 : " + createdAt;
+        return "회원 ID : " + user_id + ", \n이메일 : " + email + ", \n닉네임 : " + nickname + ", \n가입일 : " + createdAt;
     }
 
     public boolean registerUser() {  
-        System.out.println("새 계정이 생성되었습니다. " + this.userId);
+        System.out.println("새 계정이 생성되었습니다. " + this.user_id);
         return true;
     }
 
@@ -73,10 +74,57 @@ class PetCareService {
     }
     
 }
+class Breed {
+    private long breed_id;
+    private String breed_name;
+    private String species;
+
+    public Breed(long breed_id, String breed_name, String species) {
+        this.breed_id = breed_id;
+        this.breed_name = breed_name;
+        this.species = species;
+    }
+    public long getBreed_id() { 
+        return breed_id;
+    }
+    public String getBreed_name() { return breed_name;}
+    public String getspecise() { return species;}
+}
+
+class Diease {
+    private long diease_id;
+    private String diease_name;
+    private String description;
+    private boolean is_gentic;
+
+    public Diease(long diease_id, String diease_name, String description, boolean is_gentic) {
+        this.diease_id = diease_id;
+        this.diease_name = diease_name;
+        this.description = description;
+        this.is_gentic = is_gentic;
+    }
+    public long getDiease_id() {
+        return diease_id;
+    }
+    public String getDiease_name() {
+        return diease_name;
+    }
+    public String getDescription() {
+        return description;
+    }   
+    public boolean isIs_gentic() {
+        return is_gentic;
+    }
+}
 
 
 
 
+
+
+
+
+// 메인에 내용 추가 
 public class Main {
     public static void main(String[] args) {
         PetCareService petCareService = new PetCareService();
