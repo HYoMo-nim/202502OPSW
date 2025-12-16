@@ -1,0 +1,16 @@
+﻿disease_id,disease_name,description,is_genetic
+200,감기,호흡기 질환,FALSE
+201,복막염,복막에 염증,FALSE
+202,구내염,구강 내에 염증,FALSE
+203,신장병,신장 기능 저하,TRUE
+204,당뇨병,혈당 조절 문제,TRUE
+205,방광염,방광 내에 염증,FALSE
+206,위장염,위와 장에 염증,FALSE
+207,림프종,림프계에 종양,TRUE
+208,위장염,위와 장에 염증,FALSE
+209,비만,체내 지방이 과도,TRUE
+210,결막염,눈의 결막에 염증,FALSE
+,,,
+,,,
+,,,
+,,,

@@ -1,0 +1,24 @@
+﻿ingredient_id,ingredient_name,is_known_allergen
+100,어류,TRUE
+101,밀,TRUE
+102,쇠고기,TRUE
+103,칠면조,TRUE
+104,닭고기,TRUE
+105,오리,TRUE
+106,돼지고기,TRUE
+107,유제품,TRUE
+108,곡물,TRUE
+109,섬유질,FALSE
+110,양고기,TRUE
+111,콩,TRUE
+112,쌀,TRUE
+113,감자,TRUE
+114,식물성 단백질,TRUE
+115,치킨 지방,TRUE
+,,
+,,
+,,
+,,
+,,
+,,
+,,
