@@ -6,7 +6,7 @@ import jakarta.persistence.Embeddable;
 import lombok.Data;
 
 @Data
-@Embeddable // 이 클래스가 다른 엔티티에 포함될 수 있음을 선언
+@Embeddable
 public class FoodIngredientId implements Serializable {
 
     @Column(name = "food_id")
@@ -14,8 +14,6 @@ public class FoodIngredientId implements Serializable {
 
     @Column(name = "ingredient_id")
     private Long ingredientId;
-
-    // --- (JPA가 복합 키를 비교하기 위해 필수) ---
 
     // 기본 생성자
     public FoodIngredientId() {}
@@ -26,7 +24,6 @@ public class FoodIngredientId implements Serializable {
         this.ingredientId = ingredientId;
     }
 
-    // equals() : 두 객체의 내용이 같은지 비교
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -36,7 +33,6 @@ public class FoodIngredientId implements Serializable {
                Objects.equals(ingredientId, that.ingredientId);
     }
 
-    // hashCode() : 객체의 고유 식별자(해시코드) 생성
     @Override
     public int hashCode() {
         return Objects.hash(foodId, ingredientId);

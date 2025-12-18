@@ -28,12 +28,6 @@ public class PetAllergyService {
         this.petAllergyRepository = petAllergyRepository;
     }
 
-    /**
-     * 특정 펫에게 알러지 정보를 추가하는 로직
-     * @param petId 알러지를 추가할 펫의 ID
-     * @param requestDTO 클라이언트가 보낸 알러지 정보 (성분 ID, 반응)
-     * @return 저장된 PetAllergy 정보
-     */
     @Transactional
     public PetAllergy addAllergy(Long petId, PetAllergyRequestDTO requestDTO) {
         
@@ -48,7 +42,7 @@ public class PetAllergyService {
         // 3. 복합 키(PetAllergyId) 생성
         PetAllergyId allergyId = new PetAllergyId(petId, requestDTO.getIngredientId());
 
-        // (선택) 4. 이미 등록된 알러지인지 확인
+        // 4. 이미 등록된 알러지인지 확인
         if(petAllergyRepository.existsById(allergyId)) {
             throw new IllegalArgumentException("이미 등록된 알러지 정보입니다.");
         }

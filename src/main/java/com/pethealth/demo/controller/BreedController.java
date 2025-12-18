@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api") // /api로 시작하는 공통 주소
+@RequestMapping("/api")
 public class BreedController {
 
     private final BreedService breedService;
@@ -21,10 +21,6 @@ public class BreedController {
         this.breedService = breedService;
     }
 
-    /**
-     * [API 4] 모든 견종/묘종 목록 조회
-     * 주소: GET /api/breeds
-     */
     @GetMapping("/breeds")
     public ResponseEntity<List<Breed>> getAllBreeds() {
         // 1. Service를 통해 모든 Breed 데이터를 가져옴

@@ -45,10 +45,6 @@ public class Food {
 
     private String speciesTarget;
 
-    /**
-     * 1:N 관계 (FoodIngredient 테이블과 연결)
-     * 이 Food에 포함된 재료 목록 (중간 엔티티 FoodIngredient를 통해)
-     */
     @OneToMany(mappedBy = "food") // 'FoodIngredient' 엔티티의 'food' 필드와 연결
     private Set<FoodIngredient> ingredients = new HashSet<>();
 }

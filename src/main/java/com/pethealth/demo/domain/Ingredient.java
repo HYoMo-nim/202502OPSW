@@ -41,10 +41,6 @@ public class Ingredient {
     @Column(name = "is_known_allergen")
     private boolean isKnownAllergen;
 
-    /**
-     * 1:N 관계 (FoodIngredient 테이블과 연결)
-     * 이 Ingredient가 포함된 Food 목록 (중간 엔티티 FoodIngredient를 통해)
-     */
     @OneToMany(mappedBy = "ingredient") // 'FoodIngredient' 엔티티의 'ingredient' 필드와 연결
     private Set<FoodIngredient> foods = new HashSet<>();
     

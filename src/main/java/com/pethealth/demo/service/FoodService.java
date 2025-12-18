@@ -32,21 +32,12 @@ public class FoodService {
         // 2. DB에 저장
         return foodRepository.save(newFood);
     }
-    
-    /**
-     * 특정 사료(Food)의 모든 성분(Ingredient)을 조회하는 로직
-     * @param foodId 조회할 사료의 ID
-     * @return 해당 사료의 성분 목록 (FoodIngredient Set)
-     */
-    @Transactional(readOnly = true) // ⭐️ LAZY 로딩된 ingredients를 조회하기 위해 필요
+
+    @Transactional(readOnly = true)
     public Set<FoodIngredient> findIngredientsByFoodId(Long foodId) {
-        // 1. ID로 Food(사료)를 찾음
+        // ID로 Food(사료)를 찾음
         Food food = foodRepository.findById(foodId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사료 ID입니다: " + foodId));
-
-        // 2. ⭐️ @Transactional 덕분에, LAZY 로딩된 ingredients에 접근 가능
-        //    (Food.java에 정의된 'ingredients' 필드를 그대로 반환)
-        //    (이 Set에는 Ingredient 객체와 'ingredientOrder'가 모두 포함됨)
         return food.getIngredients();
     }
 }

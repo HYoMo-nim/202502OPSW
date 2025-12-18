@@ -8,7 +8,6 @@ public class CsvUtils {
 
     // CSV 한 줄을 쉼표(,)로 쪼개는 기능 (따옴표 안의 쉼표는 무시)
     public static String[] parseLine(String line) {
-        // 복잡한 정규식: 쉼표로 나누되, 따옴표(")로 감싸진 쉼표는 건드리지 않음
         return line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
     }
 
@@ -21,7 +20,7 @@ public class CsvUtils {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             return LocalDateTime.parse(cleanText, formatter);
         } catch (Exception e) {
-            return LocalDateTime.now(); // 에러나면 현재 시간
+            return LocalDateTime.now();
         }
     }
 

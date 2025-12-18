@@ -64,18 +64,12 @@ public class Pet {
     @JoinColumn(name = "user_id") // DB의 외래 키 컬럼 이름
     private Member member; // 'Member' 객체 자체를 참조
 
-    /**
-     * N:1 관계 (Pet이 관계의 주인)
-     * 이 Pet의 견종/묘종 정보
-     */
+    // ''N:1 관계 (Pet이 관계의 주인)
     @ManyToOne(fetch = FetchType.LAZY) // Pet(Many) to Breed(One)
     @JoinColumn(name = "breed_id") // DB의 외래 키(FK) 컬럼 이름
     private Breed breed; // Breed 객체 자체를 참조
     
-    /**
-     * 1:N 관계 (PetAllergy 테이블과 연결)
-     * 이 Pet이 가진 알러지 목록 (중간 엔티티 PetAllergy를 통해)
-     */
+    ///1:N 관계 (PetAllergy 테이블과 연결)
     @OneToMany(mappedBy = "pet") // 'PetAllergy' 엔티티의 'pet' 필드와 연결
     private Set<PetAllergy> allergies = new HashSet<>();
 }

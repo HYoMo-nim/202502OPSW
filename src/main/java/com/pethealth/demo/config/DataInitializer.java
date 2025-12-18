@@ -51,11 +51,9 @@ public class DataInitializer {
                 System.out.println("========== [데이터 로드 시작] ==========");
 
                 // 1. 기초 데이터 로드
-                // (보내주신 파일명 cat_menber.csv 오타 반영)
                 loadMembers("data/cat_menber.csv");
-                loadMembers("data/dog_menber.csv"); // 강아지 파일도 있다면 추가
+                loadMembers("data/dog_menber.csv");
 
-                // Breed 파일이 꼭 필요합니다 (cat_breed.csv)
                 loadBreeds("data/cat_breed.csv", "고양이");
                 loadBreeds("data/dog_breed.csv", "강아지");
 
@@ -94,7 +92,6 @@ public class DataInitializer {
         try {
             ClassPathResource resource = new ClassPathResource(path);
             if (!resource.exists()) {
-                // 파일이 없으면 로그만 남기고 넘어감 (강아지 파일 없을 경우 대비)
                 System.out.println("파일 없음 (스킵): " + path);
                 return;
             }
@@ -132,7 +129,6 @@ public class DataInitializer {
                 m.setEmail(data[1]);
                 m.setPassword(data[2]);
                 m.setNickname(data[3]);
-                // 날짜 포맷 변경 반영
                 m.setCreatedAt(CsvUtils.parseDateTime(data[4]));
                 memberRepository.save(m);
             }
@@ -148,7 +144,6 @@ public class DataInitializer {
                 Breed b = new Breed();
                 b.setBreedId(id);
                 b.setBreedName(data[1]);
-                // CSV에 species가 있으면 쓰고, 없으면 기본값 사용
                 b.setSpecies(data.length > 2 && !data[2].isBlank() ? data[2] : defaultSpecies);
                 breedRepository.save(b);
             }
@@ -222,9 +217,7 @@ public class DataInitializer {
                 p.setBreed(b);
 
                 p.setName(data[3]);
-                // data[4]는 품종명 텍스트이므로 건너뜀
                 p.setGender(data[5]);
-                // 날짜 포맷 변경 반영
                 p.setBirthDate(CsvUtils.parseDate(data[6]));
                 p.setWeightKg(new BigDecimal(data[7]));
 
@@ -236,7 +229,6 @@ public class DataInitializer {
     @Transactional
     public void loadFoodIngredients(String path) {
         processCsv(path, data -> {
-            // [0]food_id, [1]ingredient_id, [2]ingredient_order, ...나머지(설명) 무시
             Long foodId = Long.parseLong(data[0]);
             Long ingId = Long.parseLong(data[1]);
 

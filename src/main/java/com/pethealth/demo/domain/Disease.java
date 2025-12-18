@@ -42,11 +42,7 @@ public class Disease {
 
     @Column(name = "is_genetic")
     private boolean isGenetic;
-    
-    /**
-     * 다대다(N:N) 관계 설정 (Breed에 의해 매핑됨)
-     * 이 Disease(질병)와 연관된 Breed(견종) 목록
-     */
+   
     @ManyToMany(mappedBy = "diseases") // 'Breed' 엔티티의 'diseases' 필드에 의해 매핑됨
     private Set<Breed> breeds = new HashSet<>();
 }

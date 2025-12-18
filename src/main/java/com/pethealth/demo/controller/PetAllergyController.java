@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api") // /api로 시작하는 공통 주소
+@RequestMapping("/api")
 public class PetAllergyController {
 
     private final PetAllergyService petAllergyService;
@@ -18,14 +18,10 @@ public class PetAllergyController {
         this.petAllergyService = petAllergyService;
     }
 
-    /**
-     * [API 6] 특정 펫에게 알러지 정보 추가
-     * 주소: POST /api/pets/{petId}/allergies
-     */
     @PostMapping("/pets/{petId}/allergies")
     public ResponseEntity<?> addPetAllergy(
-            @PathVariable Long petId, // 1. ⭐️ 주소(URL)에서 {petId} 값을 가져옴
-            @RequestBody PetAllergyRequestDTO requestDTO // 2. ⭐️ 요청 Body에서 DTO를 가져옴
+            @PathVariable Long petId, // 1. 주소(URL)에서 {petId} 값을 가져옴
+            @RequestBody PetAllergyRequestDTO requestDTO // 2. 요청 Body에서 DTO를 가져옴
     ) {
         try {
             // 3. Service를 호출해 알러지 정보 등록
@@ -35,7 +31,7 @@ public class PetAllergyController {
             return ResponseEntity.ok(savedAllergy);
 
         } catch (IllegalArgumentException e) {
-            // 5. ⭐️ Service에서 발생한 모든 예외(존재하지 않는 ID, 중복 등) 처리
+            // 5. Service에서 발생한 모든 예외(존재하지 않는 ID, 중복 등) 처리
             return ResponseEntity
                     .badRequest()
                     .body(e.getMessage());

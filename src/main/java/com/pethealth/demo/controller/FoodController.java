@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api") // /api로 시작하는 공통 주소
+@RequestMapping("/api")
 public class FoodController {
 
     private final FoodService foodService;
@@ -21,10 +21,6 @@ public class FoodController {
         this.foodService = foodService;
     }
     
-    /**
-     * [API 7] 새로운 사료 등록
-     * 주소: POST /api/foods
-     */
     @PostMapping("/foods")
     public ResponseEntity<Food> createFood(@RequestBody FoodRequestDTO requestDTO) {
         // Service를 호출해 사료 등록
@@ -34,10 +30,6 @@ public class FoodController {
         return ResponseEntity.ok(savedFood);
     }
     
-    /**
-     * [API 5] 특정 사료(Food)의 성분(Ingredient) 목록 조회
-     * 주소: GET /api/foods/{foodId}/ingredients
-     */
     @GetMapping("/foods/{foodId}/ingredients")
     public ResponseEntity<?> getFoodIngredients(@PathVariable Long foodId) {
         try {

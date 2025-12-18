@@ -60,8 +60,6 @@ public class Breed {
     )
     
     private Set<Disease> diseases = new HashSet<>(); // 중복을 피하기 위해 Set 사용
-    // (참고) Pet.java와의 관계 (1:N)
-    // 1마리의 Breed는 여러 마리의 Pet을 가질 수 있습니다.
     
     @OneToMany(mappedBy = "breed")
     private List<Pet> pets = new ArrayList<>();

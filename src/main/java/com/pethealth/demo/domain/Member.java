@@ -16,14 +16,14 @@ import lombok.Data;
 
 @Getter
 @Setter
-@NoArgsConstructor // JPA는 기본 생성자가 필요합니다.
-@Entity // 이 클래스가 DB 테이블과 매핑됨
-@Table(name = "member") // 'member' 테이블과 연결
+@NoArgsConstructor 
+@Entity
+@Table(name = "member") 
 public class Member {
 
     @Id // Primary Key
     @GeneratedValue(
-        strategy = GenerationType.SEQUENCE, // PostgreSQL은 SEQUENCE를 사용합니다.
+        strategy = GenerationType.SEQUENCE, // PostgreSQL은 SEQUENCE를 사용
         generator = "member_user_id_seq" // schema.sql에 정의된 시퀀스 이름
     )
     @SequenceGenerator(

@@ -17,12 +17,7 @@ public class BreedService {
         this.breedRepository = breedRepository;
     }
 
-    /**
-     * 모든 견종/묘종 목록을 조회하는 로직
-     * @return DB에 있는 모든 Breed 리스트
-     */
     public List<Breed> findAllBreeds() {
-        // Repository의 findAll() 메서드를 호출해 모든 데이터를 가져옴
         return breedRepository.findAll();
     }
 }
